@@ -109,24 +109,6 @@ public class CommonController {
 
 		return "/com/UpdtConfirm";
 	}
-	
-	/**
-	 * 수정완료 팝업창로 이동
-	 */
-	@RequestMapping(value = "/com/UpdtSuccess.do")
-	public String UpdtSuccess() throws Exception {
-
-		return "/com/UpdtSuccess";
-	}
-	
-	/**
-	 * 수정실패 팝업창로 이동
-	 */
-	@RequestMapping(value = "/com/UpdtFail.do")
-	public String UpdtFail() throws Exception {
-
-		return "/com/UpdtFail";
-	}
 
 	//사용자목록 엑셀 출력
 	@RequestMapping("/com/xlsxTrsfUserList.do")
@@ -149,19 +131,11 @@ public class CommonController {
 		requestService.xlsxTrsfReqList(requestManageVO,req,res);
 	}
 	//전체자산목록 엑셀 출력
-	@RequestMapping("/com/xlsxTrsfAssetList.do")
-	public void xlsxTrsfAssetList(HttpServletRequest req, HttpServletResponse res, ModelMap model, AssetManageVO assetManageVO, HttpSession session) throws Exception {
-		LoginVO loginId = (LoginVO)req.getSession().getAttribute("LoginVO");
-		assetManageVO.setUserId(loginId.getUniqId());
-		assetService.xlsxTrsfAssetList(assetManageVO,req,res);
-	}
-	
-	//내자산목록 엑셀 출력
-	@RequestMapping("/com/xlsxTrsfMyAssList.do")
-	public void xlsxTrsfMyAssList(HttpServletRequest req, HttpServletResponse res, ModelMap model, AssetManageVO assetManageVO, HttpSession session) throws Exception {
-		LoginVO loginId = (LoginVO)req.getSession().getAttribute("LoginVO");
-		assetManageVO.setUserId(loginId.getUniqId());
-		assetService.xlsxTrsfMyAssList(assetManageVO,req,res);
-	}
+		@RequestMapping("/com/xlsxTrsfAssetList.do")
+		public void xlsxTrsfAssetList(HttpServletRequest req, HttpServletResponse res, ModelMap model, AssetManageVO assetManageVO, HttpSession session) throws Exception {
+			LoginVO loginId = (LoginVO)req.getSession().getAttribute("LoginVO");
+			assetManageVO.setUserId(loginId.getUniqId());
+			assetService.xlsxTrsfAssetList(assetManageVO,req,res);
+		}
 	
 }
